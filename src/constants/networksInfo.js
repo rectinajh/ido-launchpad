@@ -25,7 +25,7 @@ export const networks = {
     chainId: 5,
     explorer: "https://goerli.etherscan.io",
     color: "#f6c343",
-    storage: "0x76D12A57CC5B3e2f67bF9dA2eC5d178bc14e20fe",
+    storage: "0xD5BFdc632c7b40eebD10273B1cCd099b2b562646",
     multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     fromBlock: 8385000,

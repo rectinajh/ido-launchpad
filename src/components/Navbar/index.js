@@ -91,7 +91,7 @@ const Navigation = () => {
             <LinkContainer to="/launchpad">
               <Nav.Link>Launchpad</Nav.Link>
             </LinkContainer>
-            <Nav.Link href="https://merlin.meson.fi/" target="_blank">ToSwap</Nav.Link>
+            <Nav.Link href="https://merlinswap.org/trade/swap" target="_blank">MerlinSwap</Nav.Link>
             <Nav.Link href="https://twitter.com" target="_blank">Twitter</Nav.Link>
             {/* {
               isLockerEnabled &&

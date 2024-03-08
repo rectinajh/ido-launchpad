@@ -16,9 +16,9 @@ export default function Manage() {
     <s.Wrapper>
       <s.BodyWrapper>
         <s.ContentWrapper>
-          {(domainSettings?.admin) ? (
+          {(!domainSettings?.admin) ? (
             <Greetings />
-          ) : (isAdmin) ? (
+          ) : (!isAdmin) ? (
             isAppConfigured ? (
               <>
                 Connect to the Admin account to gain access to the management page.

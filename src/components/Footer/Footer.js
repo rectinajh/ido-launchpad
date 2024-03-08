@@ -39,7 +39,7 @@ const Footer = () => {
   } = useApplicationContext();
 
   const year = new Date().getFullYear()
-  const copyright = `© ${"Merlin Chain.io"} ${year}`
+  const copyright = `© ${"MerlinPad"} ${year}`
   const SourceCopyright = (
     <>
       Powered by{' '}
@@ -104,10 +104,10 @@ const Footer = () => {
 
         <s.SpacerMedium />
 
-        {/* <Row fd="column" ai="center">
+        <Row fd="column" ai="center">
           {projectName && <Copyright>{copyright}</Copyright>}
           {!disableSourceCopyright && <Copyright pale>{SourceCopyright}</Copyright>}
-        </Row> */}
+        </Row>
       </Container>
     </Box>
   );
