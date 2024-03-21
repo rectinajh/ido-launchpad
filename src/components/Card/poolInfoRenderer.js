@@ -7,6 +7,7 @@ import { useApplicationContext } from "../../context/applicationContext";
 import { usePoolContext } from "../../context/poolContext";
 import * as s from "../../styles/global";
 import { utils } from "../../utils";
+import moment from 'moment';
 // import { getRouterName } from "../../utils/utils";
 import TokenInfo from "./tokenInfo";
 
@@ -27,10 +28,13 @@ const PoolInfoRenderer = (props) => {
     console.log(idoInfo);
     return null;
   }
-
   const startDate = new Date(parseInt(idoInfo.start) * 1000);
+  // const startDate =moment(parseInt(idoInfo.start) * 1000).format("YYYY-MM-DD HH:mm:ss");
   const endDate = new Date(parseInt(idoInfo.end) * 1000);
-  const claimDate = new Date(parseInt(idoInfo.claim) * 1000);
+  // const endDate =utils.formatDateToUTC(new Date(parseInt(idoInfo.end) * 1000))
+
+  // const endDate = moment(parseInt(idoInfo.end) * 1000).format("YYYY-MM-DD HH:mm:ss");
+  const claimDate = new Date(parseInt(idoInfo.claim) * 1000)
 
   const isAddLiquidityEnabled = idoInfo.listingRate > 0 && idoInfo.lpPercentage > 0;
 
@@ -71,28 +75,28 @@ const PoolInfoRenderer = (props) => {
           <s.Card ai="center" style={{ padding: 0 }}>
             <s.TextID>Soft Cap</s.TextID>
             <s.TextDescription>
-              {BigNumber(library.web3.utils.fromWei(idoInfo.softCap)).toFormat(2) +
+              {BigNumber(library.web3.utils.fromWei(idoInfo.softCap)) +
                 " " + baseCurrencySymbol}
             </s.TextDescription>
           </s.Card>
           <s.Card ai="center" style={{ padding: 0 }}>
             <s.TextID>Hard Cap</s.TextID>
             <s.TextDescription>
-              {BigNumber(library.web3.utils.fromWei(idoInfo.hardCap)).toFormat(2) +
+              {BigNumber(library.web3.utils.fromWei(idoInfo.hardCap)) +
                 " " + baseCurrencySymbol}
             </s.TextDescription>
           </s.Card>
           <s.Card ai="center" style={{ padding: 0 }}>
             <s.TextID>Minimum Buy</s.TextID>
             <s.TextDescription>
-              {BigNumber(library.web3.utils.fromWei(idoInfo.min)).toFormat(2) +
+              {BigNumber(library.web3.utils.fromWei(idoInfo.min)) +
                 " " + baseCurrencySymbol}
             </s.TextDescription>
           </s.Card>
           <s.Card ai="center" style={{ padding: 0 }}>
             <s.TextID>Maximum Buy</s.TextID>
             <s.TextDescription>
-              {BigNumber(library.web3.utils.fromWei(idoInfo.max)).toFormat(2) +
+              {BigNumber(library.web3.utils.fromWei(idoInfo.max)) +
                 " " + baseCurrencySymbol}
             </s.TextDescription>
           </s.Card>
@@ -122,10 +126,10 @@ const PoolInfoRenderer = (props) => {
           {endDate.toString()}
         </s.Container>
         <s.SpacerSmall />
-        {/* <s.Container fd="row" jc="space-between">
+        <s.Container fd="row" jc="space-between">
           <s.TextID fw="700">Lock LP until</s.TextID>
           {claimDate.toString()}
-        </s.Container> */}
+        </s.Container>
         <s.SpacerSmall />
       </s.Card>
       <s.SpacerMedium />

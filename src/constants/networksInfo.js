@@ -25,10 +25,10 @@ export const networks = {
     chainId: 5,
     explorer: "https://goerli.etherscan.io",
     color: "#f6c343",
-    storage: "0xD5BFdc632c7b40eebD10273B1cCd099b2b562646",
+    storage: "0xD5BFdc632c7b40eebD10273B1cCd099b2b562646",//0xD5BFdc632c7b40eebD10273B1cCd099b2b562646 
     multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    fromBlock: 8385000,
+    fromBlock: 10654837,
     baseCurrency: {
       decimals: 18,
       name: "ETH",
@@ -106,8 +106,9 @@ export const networks = {
     chainId: 97,
     explorer: "https://testnet.bscscan.com/",
     color: "#CC9B00",
+    storage: "0x86b863cCc3611980088964970f903722b9Ec0663",
     multicall: "0x6e5BB1a5Ad6F68A8D7D6A5e47750eC15773d6042",
-    fromBlock: 27113000,
+    fromBlock: 38679139,
     baseCurrency: {
       decimals: 18,
       name: "BNB",

@@ -130,13 +130,15 @@ const BuyTokenCard = (props) => {
         <s.Card style={{ padding: 0 }}>
           <s.TextID>{"Minimum " + baseCurrencySymbol}</s.TextID>
           <s.TextDescription>
-            {BigNumber(library.web3.utils.fromWei(idoInfo.min)).toFormat(2)}
+          {/* BigNumber(library.web3.utils.fromWei(idoInfo.min)).toFormat(2) */}
+            { library.web3.utils.fromWei(idoInfo.min)  }
           </s.TextDescription>
         </s.Card>
         <s.Card style={{ padding: 0 }}>
           <s.TextID>Maximum {baseCurrencySymbol}</s.TextID>
           <s.TextDescription>
-            {BigNumber(library.web3.utils.fromWei(idoInfo.max)).toFormat(2)}
+          {/* BigNumber(library.web3.utils.fromWei(idoInfo.max)).toFormat(2) */}
+            {library.web3.utils.fromWei(idoInfo.max)}
           </s.TextDescription>
         </s.Card>
       </s.Container>
@@ -171,9 +173,8 @@ const BuyTokenCard = (props) => {
         <s.Container flex={4}>
           <s.TextID>My invested {baseCurrencySymbol}</s.TextID>
           <s.TextDescription>
-            {BigNumber(library.web3.utils.fromWei(idoInfo.userData.totalInvestedETH)).toFormat(
-              2
-            ) + " " + baseCurrencySymbol}
+          {/* BigNumber(library.web3.utils.fromWei(idoInfo.userData.totalInvestedETH)).toFormat(2) */}
+            {library.web3.utils.fromWei(idoInfo.userData.totalInvestedETH) + " " + baseCurrencySymbol}
           </s.TextDescription>
         </s.Container>
         <s.Container flex={1}>

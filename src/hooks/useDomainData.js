@@ -102,8 +102,8 @@ export default function useDomainData() {
         console.log('owner',owner)
         const settings = parseSettings(info || '{}');
 
-        // const admin = owner === ZERO_ADDRESS ? '' : owner;
-        const admin = '0xD2F3c942Bc1AaEaD58C38801B46535fc7Bd3aA0c';
+        const admin = owner === ZERO_ADDRESS ? '' : owner;
+        // const admin = '0xD2F3c942Bc1AaEaD58C38801B46535fc7Bd3aA0c';
 
         setDomainSettings({ ...settings, admin });
 

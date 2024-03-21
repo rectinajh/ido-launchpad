@@ -45,7 +45,7 @@ const PoolRenderer = (props) => {
     if (idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash) {
       setImage(getValidImageUrl(idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway));
     }
-  }, [idoInfo, idoInfo.metadata.image, idoInfo.metadata.imageHash, ipfsInfuraDedicatedGateway]);
+  }, [idoInfo, idoInfo?.metadata?.image, idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway]);
 
   // if (!utils.isValidPool(idoInfo) || !idoInfo) {
   //   return (
@@ -111,17 +111,15 @@ const PoolRenderer = (props) => {
         <s.Container fd="row">
           <s.Container ai="center" flex={1}>
             <s.TextID fullWidth>Soft cap</s.TextID>
-            {BigNumber(contract.web3.utils.fromWei(softCap)).toFormat(
-              2
-            ) +
+            {/* BigNumber(contract.web3.utils.fromWei(softCap)).toFormat(2) */}
+            {contract.web3.utils.fromWei(softCap)+
               " " +
               baseCurrencySymbol}
           </s.Container>
           <s.Container ai="center" flex={1}>
             <s.TextID fullWidth>Hard cap</s.TextID>
-            {BigNumber(contract.web3.utils.fromWei(hardCap)).toFormat(
-              2
-            ) +
+            {/* BigNumber(contract.web3.utils.fromWei(hardCap)).toFormat(2) */}
+            {contract.web3.utils.fromWei(hardCap) +
               " " +
               baseCurrencySymbol}
           </s.Container>

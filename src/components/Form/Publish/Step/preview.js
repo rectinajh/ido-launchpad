@@ -294,14 +294,16 @@ export default function Preview() {
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <s.TextID>Soft Cap</s.TextID>
           <s.TextDescription>
-            {BigNumber(softCap).toFormat(2) +
+          {/* BigNumber(softCap).toFormat(2)  */}
+            {softCap +
               " $" +
               baseCurrencySymbol}
           </s.TextDescription>
           <s.SpacerSmall />
           <s.TextID>Hard Cap</s.TextID>
           <s.TextDescription>
-            {hardCapBN.toFormat(2) +
+            {/* hardCapBN.toFormat(2)  */}
+            {hardCapBN+
               " $" +
               baseCurrencySymbol}
           </s.TextDescription>
@@ -317,14 +319,16 @@ export default function Preview() {
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <s.TextID>Minimum Buy</s.TextID>
           <s.TextDescription>
-            {BigNumber(minETH).toFormat(2) +
+            {/* BigNumber(minETH).toFormat(9) */}
+            {minETH +
               " $" +
               baseCurrencySymbol}
           </s.TextDescription>
           <s.SpacerSmall />
           <s.TextID>Maximum Buy</s.TextID>
           <s.TextDescription>
-            {BigNumber(maxETH).toFormat(2) +
+            {/* BigNumber(maxETH).toFormat(9)  */}
+            {maxETH +
               " $" +
               baseCurrencySymbol}
           </s.TextDescription>

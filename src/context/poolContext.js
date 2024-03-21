@@ -47,26 +47,39 @@ export const PoolContextProvider = ({ children }) => {
     }
   }, [allPoolAddress, ipfsInfuraDedicatedGateway]);
 
-  useEffect(() => {
-    setUserPoolAddresses([])
-    const delayDebounceFn = setTimeout(() => {
-      Object.values(allPools).map(async (IDOPoolData, index) => {
-        const { idoAddress, owner } = IDOPoolData;
-        await utils.loadUserData(idoAddress, contract.web3, account).then((userData) => {
-          IDOPoolData.userData = userData
-          setAllPools((prevAllPools) => ({ ...prevAllPools, ...{ [idoAddress]: IDOPoolData } }));
+useEffect(() => {
+  setUserPoolAddresses([]);
 
-          if (
-            owner?.toLowerCase() === account?.toLowerCase()
-            || (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
-          ) setUserPoolAddresses((prevUserPoolAddresses) => [ ...prevUserPoolAddresses, idoAddress ])
+  const delayDebounceFn = setTimeout(async () => {
+    const poolUpdates = {};
+    const userPools = [];
 
-        });
-      });
-    }, 500);
+    const poolDataPromises = Object.values(allPools).map(async (IDOPoolData) => {
+      const { idoAddress, owner } = IDOPoolData;
+      try {
+        const userData = await utils.loadUserData(idoAddress, contract.web3, account);
+        IDOPoolData.userData = userData;
+        poolUpdates[idoAddress] = IDOPoolData;
 
-    return () => clearTimeout(delayDebounceFn);
-  }, [account])
+        if (
+          owner?.toLowerCase() === account?.toLowerCase() ||
+          (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
+        ) {
+          userPools.push(idoAddress);
+        }
+      } catch (error) {
+        console.error(`Failed to load user data for pool ${idoAddress}:`, error);
+      }
+    });
+
+    await Promise.all(poolDataPromises);
+
+    setAllPools(prevAllPools => ({ ...prevAllPools, ...poolUpdates }));
+    setUserPoolAddresses(userPools);
+  }, 500);
+
+  return () => clearTimeout(delayDebounceFn);
+}, [account, allPools, contract.web3, utils]);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -84,7 +97,7 @@ export const PoolContextProvider = ({ children }) => {
     if (!contract?.IDOFactory) {
       return null;
     }
-
+    console.log('IDOCreatedEvent',IDOCreatedEvent)
     if (IDOCreatedEvent) {
       IDOCreatedEvent.unsubscribe();
       setAllPools([]);

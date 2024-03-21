@@ -43,26 +43,27 @@ const Footer = () => {
   const SourceCopyright = (
     <>
       Powered by{' '}
-      <a href="https://merlinchain.io/" target="_blank" rel="noopener noreferrer">
+      <a href="https://merlinchain.io/" className="font-FuturaXBlkItBT" target="_blank" rel="noopener noreferrer">
       Merlinchain
       </a>
     </>
   );
 
   return (
-    <Box>
-      <hr
+    <Box className="font-FuturaXBlkItBT">
+      {/* <hr
         style={{
           color: "#ffffff",
           backgroundColor: "#ffffff",
           height: 1,
           borderColor: "#ffffff",
         }}
-      />
+      /> */}
       <Container style={{ padding: 30 }}>
         <Row fd="column" ai="center">
-          <Heading>Contract Addresses</Heading>
-          <FooterLink
+          <Heading className="font-FuturaXBlkItBT">Contract Addresses</Heading>
+          {IDOFactoryAddress &&         <FooterLink
+          className="font-FuturaXBlkItBT"
             target="_blank"
             href={
               networkExplorer +
@@ -71,10 +72,12 @@ const Footer = () => {
             }
           >
             IDO Factory: {shortenAddress(IDOFactoryAddress)} <FaExternalLinkAlt size=".75em" />
-          </FooterLink>
+          </FooterLink>}
+ 
           {
-            isLockerEnabled && (
+            isLockerEnabled && TokenLockerFactoryAddress && (
               <FooterLink
+              className="font-FuturaXBlkItBT"
                 target="_blank"
                 href={
                   networkExplorer +
@@ -104,9 +107,9 @@ const Footer = () => {
 
         <s.SpacerMedium />
 
-        <Row fd="column" ai="center">
-          {projectName && <Copyright>{copyright}</Copyright>}
-          {!disableSourceCopyright && <Copyright pale>{SourceCopyright}</Copyright>}
+        <Row fd="column" ai="center" className="font-FuturaXBlkItBT">
+          {<Copyright className="font-FuturaXBlkItBT">{copyright}</Copyright>}
+          {!disableSourceCopyright && <Copyright pale className="font-FuturaXBlkItBT">{SourceCopyright}</Copyright>}
         </Row>
       </Container>
     </Box>

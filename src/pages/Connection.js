@@ -6,6 +6,7 @@ import { SUPPORTED_NETWORKS, SUPPORTED_CHAIN_IDS } from '../connectors';
 import { Web3Status } from '../components/Web3Status';
 import * as s from "../styles/global";
 import { useApplicationContext } from '../context/applicationContext';
+
 // import Panel from './Panel'
 // import { ApplicationModal, setOpenModal } from '../state/application/actions'
 // import { useAppState } from 'state/application/hooks'
@@ -56,7 +57,7 @@ export default function Connection() {
   const {
     isAvailableNetwork,
   } = useApplicationContext();
-
+  console.log('isAvailableNetwork',isAvailableNetwork)
 //   const wordpressData = useWordpressInfo()
 //   const dispatch = useDispatch();
 //   const { admin, factory, router } = useAppState()

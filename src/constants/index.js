@@ -2,10 +2,10 @@ import BigNumber from "bignumber.js";
 import { injected, newWalletConnect, newWalletlink } from '../connectors';
 import { networks } from '../constants/networksInfo';
 
-// const BSC_ID = 56;
+const BSC_ID = 97;
 const GOERLI_ID = 5;
 
-export const STORAGE_NETWORK_ID = GOERLI_ID;
+export const STORAGE_NETWORK_ID = BSC_ID;
 export const STORAGE_NETWORK_NAME = networks[STORAGE_NETWORK_ID.toString()].name;
 export const STORAGE = networks[STORAGE_NETWORK_ID.toString()].storage;
 
@@ -15,27 +15,35 @@ export const WALLET_NAMES = {
   INJECTED: 'Injected',
   METAMASK: 'MetaMask',
   WALLET_CONNECT: 'WalletConnect',
-//   WALLET_LINK: 'Coinbase Wallet',
+  WALLET_OKX: 'OKX Wallet(EVM)',
 };
 
 export const SUPPORTED_WALLETS = {
-  INJECTED: {
-    connector: injected,
-    name: WALLET_NAMES.INJECTED,
-    iconName: 'arrow-right.svg',
-    description: 'Injected web3 provider.',
-    href: null,
-    color: '#010101',
-    primary: true,
-  },
+  // INJECTED: {
+  //   connector: injected,
+  //   name: WALLET_NAMES.INJECTED,
+  //   iconName: 'arrow-right.svg',
+  //   description: 'Injected web3 provider.',
+  //   href: null,
+  //   color: '#010101',
+  //   primary: true,
+  // },
   METAMASK: {
     connector: injected,
-    name: WALLET_NAMES.METAMASK,
-    iconName: 'metamask.png',
+    name: WALLET_NAMES.WALLET_OKX,
+    iconName: 'OKX.svg',
     description: 'Easy-to-use browser extension.',
     href: null,
-    color: '#E8831D',
+    color: '#fff',
   },
+  // METAMASK: {
+  //   connector: injected,
+  //   name: WALLET_NAMES.METAMASK,
+  //   iconName: 'metamask.png',
+  //   description: 'Easy-to-use browser extension.',
+  //   href: null,
+  //   color: '#E8831D',
+  // },
   WALLET_CONNECT: {
     connector: newWalletConnect(STORAGE_NETWORK_ID),
     name: WALLET_NAMES.WALLET_CONNECT,
@@ -44,7 +52,16 @@ export const SUPPORTED_WALLETS = {
     href: null,
     color: '#4196FC',
     mobile: true,
+    mobileOnly:true
   },
+  // OKX: {
+  //   connector: injected,
+  //   name: WALLET_NAMES.WALLET_OKX,
+  //   iconName: 'OKX.svg',
+  //   description: 'Easy-to-use browser extension.',
+  //   href: null,
+  //   color: '#E8831D',
+  // },
 //   WALLET_LINK: {
 //     connector: newWalletlink(STORAGE_NETWORK_ID),
 //     name: WALLET_NAMES.WALLET_LINK,

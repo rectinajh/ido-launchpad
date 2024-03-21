@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 // Used for wrapping a page component
 export const Screen = styled.div`
-  background-color: var(--background);
+  // background-color: var(--background);
   background-size: 200vh;
   background-position: top 30vh left 50%;
   background-repeat: no-repeat;
@@ -27,6 +27,12 @@ export const iconUpload = styled.input`
 export const SpacerXSmall = styled.div`
   height: 8px;
   width: 8px;
+`;
+export const homeContent = styled.div`
+  margin:auto;
+  @media (min-width: 1024px) { /* lg 屏幕断点 */  
+  padding-top:12.4rem;
+}  
 `;
 
 // Used for providing space between components
@@ -62,6 +68,7 @@ export const Container = styled.div`
   margin: ${({ m }) => (m ? m : "none")};
   padding: ${({ p }) => (p ? p : "none")};
   flex-wrap: wrap;
+  z-index:9;
 `;
 
 export const Wrapper = styled.section`
@@ -177,15 +184,22 @@ export const Slideshow = styled.div`
 `;
 
 export const LogoTitle = styled.img`
+  width: 100%;
+  height: auto;
+  @media (min-width: 1024px) { /* lg 屏幕断点 */  
   width: auto;
-  height: 50px;
+  height: auto;
+}  
 `;
-export const LogoTitleName = styled.span`
- margin-right:1rem;
- font-family: Halyard Display, Halyard Display;
- font-weight: 700;
- font-size: 16px;
- color: #7A4FF4;
+export const LogoTitleName = styled.div`
+font-family: 'Futura XBlkIt BT', sans-serif;
+ font-weight: 900;
+ font-size: 1.3rem;
+ color: #fff;
+ @media (min-width: 1024px) { /* lg 屏幕断点 */  
+    font-size: 1.4rem;  
+  }  
+ text-align:center;
 `;
 export const Text = styled.div`
   margin: 0.6rem 0;
@@ -338,13 +352,12 @@ export const Textarea = styled.textarea`
 `;
 
 export const button = styled.button`
-  background-color: ${({ secondary }) => (secondary ? "inherit" : "var(--primary)")};
+  background-color: #7A4FF4;
   border: ${({ secondary }) => (secondary ? "var(--secondary-color)" : "var(--primary)")} 0.125em solid;
   font-weight: 700;
   padding: 5px 20px;
   border-radius: 20px;
-  color: ${({ secondary }) => (secondary ? "var(--secondary-color)" : "var(--card)")};
-
+  color:#fff;
   ${({ fullWidth }) =>
     fullWidth ? 'width: 100%;' : ''
   }

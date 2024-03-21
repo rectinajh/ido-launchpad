@@ -27,7 +27,16 @@
 
   --globalRadius: "20px";
 }
+@font-face {  
+  font-family: 'FuturaXBlkItBT';  
+  src: url('./assets/Futura XBlkIt BT Extra Black Italic.ttf') format('truetype');  
+  font-weight: normal;  
+  font-style: italic;  
+}
+.font-FuturaXBlkItBT{
+  font-family: 'FuturaXBlkItBT', sans-serif !important; 
 
+}
 .alignRight{
   float: right;
 }
@@ -168,11 +177,16 @@ body {
   background-color: var(--background);
   color: var(--text);
 }
-
+  
+.link-style:hover {  
+  background-color: #7A4FF4; /* 鼠标悬停时的背景颜色 */  
+  /* 可以添加更多悬停样式 */  
+}
 * {
   /* font-family: 'VT323', monospace; */
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: 'Halyard Display, Halyard Display',sans-serif; */
   /* font-family: 'Barlow', sans-serif; */
   letter-spacing: 0em;
   font-size: 20px;

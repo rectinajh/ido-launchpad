@@ -15,12 +15,13 @@ export default function NumberField(props) {
       onChange={onChange}
       InputProps={{
         endAdornment: <InputAdornment position="end">{adornment || ''}</InputAdornment>,
-        inputProps: {
-          min: 0,
-        }
+
       }}
 
       {...otherProps}
     />
   );
+  // inputProps: {
+  //   min: 0,
+  // }  这个属性有bug，加了就不能输入小数点了
 }

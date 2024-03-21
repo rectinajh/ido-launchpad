@@ -165,6 +165,7 @@ export default function Option({
         target = '_blank'
         href={link}
         rel = 'noopener noreferrer'
+        style={{ textDecoration: 'none' }} 
       >
         {content}
       </a>

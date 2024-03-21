@@ -25,7 +25,43 @@ export function getRouterName(router, factory, weth, chainId) {
 export function timeout(delay) {
   return new Promise((res) => setTimeout(res, delay));
 }
+export function formatDateToUTC(dateString) {  
+  // 解析日期字符串为Date对象  
+  const date = new Date(dateString);  
 
+  // 将Date对象转换为UTC时间  
+  const utcDate = new Date(Date.UTC(  
+      date.getUTCFullYear(),  
+      date.getUTCMonth(),  
+      date.getUTCDate(),  
+      date.getUTCHours(),  
+      date.getUTCMinutes(),  
+      date.getUTCSeconds(),  
+      date.getUTCMilliseconds()  
+  ));  
+
+  // 格式化UTC日期时间字符串  
+  const formattedDate = utcDate.toLocaleString('en-US', {  
+      year: 'numeric',  
+      month: 'short',  
+      day: '2-digit',  
+      hour: 'numeric',  
+      minute: '2-digit',  
+      second: '2-digit',  
+      hour12: true,  
+      timeZone: 'UTC'  
+  }).replace(',', '').replace(/\//g, '-');  
+
+  return formattedDate;  
+  // 示例使用  
+// const dateString = 'Sat Mar 16 2024 22:00:15 GMT+0800 (China Standard Time)';  
+// const formattedDateString = formatDateToUTC(dateString);  
+}  
+
+
+
+// 输出可能类似于：Mar-16-2024, 10:00:15 PM GMT+00:00  
+// 注意：输出格式可能因浏览器和地区设置而异，需要调整以满足特定格式要求
 export var typewatch = (function () {
   var timer = 0;
   return function (callback, ms) {

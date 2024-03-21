@@ -57,6 +57,11 @@ export const ApplicationContextProvider = ({ children }) => {
       && domainSettings?.ipfsInfuraProjectId
       && domainSettings?.ipfsInfuraProjectSecret
     ))
+    // setIsAppConfigured(true)
+    console.log(domainSettings?.contracts?.[chainId]?.FeeTokenAddress,domainSettings?.contracts?.[chainId]?.IDOFactoryAddress,domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress,
+      domainSettings?.ipfsInfuraProjectSecret,
+      domainSettings?.networks?.[chainId]?.webSocketRPC,domainSettings?.admin,domainSettings?.ipfsInfuraDedicatedGateway,domainSettings?.ipfsInfuraProjectId,
+      )
   }, [domainSettings, chainId])
 
   useEffect(() => {

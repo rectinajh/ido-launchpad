@@ -136,6 +136,9 @@ const WithdrawETH = (props) => {
           }
           onClick={(e) => {
             e.preventDefault();
+            if (BigNumber(idoInfo.totalInvestedETH).lt(BigNumber(idoInfo.softCap))) {
+              alert('Crowdfunding failed, the admin will refund the invested money.');
+            }
             withdrawETH();
           }}
         >

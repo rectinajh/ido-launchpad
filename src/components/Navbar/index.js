@@ -51,7 +51,7 @@ const Navigation = () => {
     isFeeTokenDataFetching,
   } = useApplicationContext();
 
-  const { chainId } = useWeb3React();
+  const { chainId,account } = useWeb3React();
 
   const mockCompanyLogo = LOGO;
 
@@ -80,8 +80,8 @@ const Navigation = () => {
   return (
     <Navbar collapseOnSelect expand="lg" variant="dark" style={{ margin: 15 }}>
       <Container style={{ maxWidth: "100%" }}>
-        <s.LogoTitle src={logoUrl || mockCompanyLogo} />
-        <s.LogoTitleName>MerlinPad</s.LogoTitleName>
+        {/* <s.LogoTitle src={logoUrl || mockCompanyLogo} />
+        <s.LogoTitleName>MerlinPad</s.LogoTitleName> */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -91,30 +91,47 @@ const Navigation = () => {
             <LinkContainer to="/launchpad">
               <Nav.Link>Launchpad</Nav.Link>
             </LinkContainer>
-            <Nav.Link href="https://merlinswap.org/trade/swap" target="_blank">MerlinSwap</Nav.Link>
-            <Nav.Link href="https://twitter.com" target="_blank">Twitter</Nav.Link>
-            {/* {
-              isLockerEnabled &&
-              <LinkContainer to="/locker">
+            <Nav.Link href="https://twitter.com/merlinpad_io" target="_blank">Twitter</Nav.Link>
+            <LinkContainer to="/locker">
                 <Nav.Link>Locker</Nav.Link>
               </LinkContainer>
-            }
             <LinkContainer to="/account">
               <Nav.Link>Account</Nav.Link>
             </LinkContainer>
-            {
-              isAdmin &&
-              <LinkContainer to="/manage">
+            <LinkContainer to="/manage">
                 <Nav.Link>Manage</Nav.Link>
               </LinkContainer>
-            } */}
+              <Nav.Link href="https://merlinswap.org/trade/swap" target="_blank">Swap</Nav.Link>
+
+              <NavDropdown
+                  title="Bridge"
+                  id="collasible-nav-dropdown"
+                >
+                  <Nav.Link
+                    href="https://merlinchain.io/bridge"
+                    target="_blank"
+                    className="link-style"
+                  >Merlin Bridge
+      
+                  </Nav.Link>
+                  {/* <NavDropdown.Item href="#action/3.3"></NavDropdown.Item> */}
+                  <NavDropdown.Divider />
+                  <Nav.Link
+                    href="https://meson.fi/"
+                    target="_blank"
+                    className="link-style"
+
+                  >Meson
+      
+                  </Nav.Link>
+                </NavDropdown>
           </Nav>
           <Nav>
             <Nav.Link>{getNetworkInfo()}</Nav.Link>
-
-            {
+            {account &&        (
               !hasFeeToken ? (
-                <Nav.Link>
+                <Nav.Link                     className="link-style"
+                >
                   {
                     isNativeCoinBalanceFetching ?
                       <Loader/> :
@@ -139,6 +156,8 @@ const Navigation = () => {
                   <Nav.Link
                     href={`${networkExplorer}/address/${FeeTokenAddress}`}
                     target="_blank"
+                    className="link-style"
+
                   >
                     {
                       isFeeTokenDataFetching ?
@@ -153,7 +172,9 @@ const Navigation = () => {
                   <NavDropdown.Divider />
                 </NavDropdown>
               )
-            }
+            )
+          }
+    
           </Nav>
           <Web3Status />
         </Navbar.Collapse>
